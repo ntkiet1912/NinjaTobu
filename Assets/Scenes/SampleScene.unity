@@ -930,7 +930,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4606396822705698285, guid: 3a98e81729858c94aa2871cb78541785, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -27.3
+      value: -28.7
       objectReference: {fileID: 0}
     - target: {fileID: 4606396822705698285, guid: 3a98e81729858c94aa2871cb78541785, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1369,6 +1369,7 @@ GameObject:
   - component: {fileID: 1398191289}
   - component: {fileID: 1398191288}
   - component: {fileID: 1398191290}
+  - component: {fileID: 1398191291}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -1398,7 +1399,7 @@ MonoBehaviour:
   m_Follow: {fileID: 313586532}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 10.99222
+    OrthographicSize: 12.5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -1424,7 +1425,7 @@ Transform:
   m_GameObject: {fileID: 1398191287}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.12, y: -5.4800005, z: -10}
+  m_LocalPosition: {x: 1.18, y: -5.4800005, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1443,7 +1444,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02cca379caeba7c45b6abf5f28c4ae4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockedXPosition: 1.12
+  lockedXPosition: 1.18
+--- !u!114 &1398191291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398191287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f8e15236b791c43805e9ef46e50f24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1514655497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1605,7 +1618,7 @@ Transform:
   m_GameObject: {fileID: 1548454628}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.119999, y: 10.829999, z: -9.991698}
+  m_LocalPosition: {x: -21.06, y: 10.829999, z: -9.991698}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1655,7 +1668,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10.99222
+  orthographic size: 12.5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
