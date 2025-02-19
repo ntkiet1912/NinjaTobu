@@ -20,6 +20,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip CoinCollected;
     public AudioClip AttackSFX;
 
+    [Header("Save Volume")]
+    public bool isMusicOn;
+    public bool isSFXOn;
     private void Awake()
     {
         if (instance == null)
@@ -45,17 +48,17 @@ public class AudioManager : MonoBehaviour
     {
         musicSource.Play();
     }
-    public void  SetGamePlayMusic()
+    public void SetGamePlayMusic()
     {
         int index = Random.Range(0, endlessMode.Length);
         musicSource.clip = endlessMode[index];
     }
     public void WallHitSFX()
     {
-        sfxSource.PlayOneShot(wallAgainst , 0.3f);
-        
+        sfxSource.PlayOneShot(wallAgainst, 0.3f);
+
     }
-    
+
     public void DieSFX()
     {
         sfxSource.PlayOneShot(playerDie);
@@ -79,10 +82,39 @@ public class AudioManager : MonoBehaviour
     }
     public void PlayCoinCollectedSFX()
     {
-        sfxSource.PlayOneShot(CoinCollected , 0.8f);
+        sfxSource.PlayOneShot(CoinCollected, 0.8f);
     }
     public void PlayAttackSFX()
     {
         sfxSource.PlayOneShot(AttackSFX);
+    }
+
+    public void VolumeMusic(float volume)
+    {
+        musicSource.volume = volume;
+    }
+    public void VolumeSFX(float volume)
+    {
+        sfxSource.volume = volume;
+    }
+    public void CheckVolume()
+    {
+        if (musicSource.volume == 0)
+        {
+            isMusicOn = false;
+        }
+        else
+        {
+            isMusicOn = true;
+        }
+
+        if (sfxSource.volume == 0)
+        {
+            isSFXOn = false;
+        }
+        else
+        {
+            isSFXOn = true;
+        }
     }
 }

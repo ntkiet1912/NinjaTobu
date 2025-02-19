@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Coin
   - GameManager
+  - SFX
+  - Music
   layers:
   - Default
   - TransparentFX
