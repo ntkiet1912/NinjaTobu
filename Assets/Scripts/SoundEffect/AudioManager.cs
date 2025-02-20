@@ -38,7 +38,26 @@ public class AudioManager : MonoBehaviour
     public void StartMainMenu()
     {
         musicSource.clip = mainMenu;
-        musicSource.Play();
+        PlayMusic();
+        isMusicOn = PlayerPrefs.GetInt("MusicOn", 1) == 1;
+        isSFXOn = PlayerPrefs.GetInt("SFXOn", 1) == 1;
+        if (isMusicOn)
+        {
+           musicSource.volume = 1;
+        }
+        else
+        {
+            musicSource.volume = 0;
+        }
+        if (isSFXOn)
+        {
+            sfxSource.volume = 1;
+        }
+        else
+        {
+            sfxSource.volume = 0;
+        }
+
     }
     public void StopMusic()
     {
