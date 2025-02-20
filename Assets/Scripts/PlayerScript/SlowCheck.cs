@@ -7,8 +7,12 @@ public class SlowCheck : MonoBehaviour
     private int slowCount = 1;
     private bool isJump = false;
     [SerializeField] private GroundWallCheck groundCheck;
-    [SerializeField] private GameObject slowEffect;
-    private GameObject currentSlowEffect;
+    private Animator anim;
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+        
+    }
     private void Update()
     {
         CheckJump();
@@ -16,17 +20,14 @@ public class SlowCheck : MonoBehaviour
     }
     private void ActiveSlow()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             if (slowCount > 0 && isJump)
             {
                 AudioManager.instance.PlaySlowMotionSFX();
                 Time.timeScale = slowScale;
                 slowCount--;
-                if (currentSlowEffect == null) 
-                {
-                    StartCoroutine(StartEffect());
-                }
+                anim.SetBool("isSlow", true);
             }
             else
             {
@@ -37,10 +38,7 @@ public class SlowCheck : MonoBehaviour
         {
             Time.timeScale = 1;
             AudioManager.instance.StopSFX();
-            if (currentSlowEffect != null) 
-            {
-                Destroy(currentSlowEffect);
-            }
+            anim.SetBool("isSlow", false);
         }
     }
     private void CheckJump()
@@ -55,22 +53,5 @@ public class SlowCheck : MonoBehaviour
             isJump = false;
         }
     }
-    IEnumerator StartEffect()
-    {
-        currentSlowEffect = Instantiate(slowEffect, transform.position, Quaternion.identity);
-        currentSlowEffect.transform.SetParent(transform); // Để hiệu ứng di chuyển theo nhân vật
-        ParticleSystem effect = currentSlowEffect.GetComponentInChildren<ParticleSystem>();
-
-        if (effect != null)
-        {
-            effect.Play();
-        }
-
-        while (Time.timeScale < 1) 
-        {
-            yield return null;
-        }
-
-        Destroy(currentSlowEffect);
-    }
+   
 }

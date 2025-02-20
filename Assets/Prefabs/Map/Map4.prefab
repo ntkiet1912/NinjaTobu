@@ -517,6 +517,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block_1
       objectReference: {fileID: 0}
+    - target: {fileID: 8727564338518531014, guid: a2cb9e038399cff4190943f5ddae7aea, type: 3}
+      propertyPath: m_Size.x
+      value: 3.1969032
+      objectReference: {fileID: 0}
+    - target: {fileID: 8727564338518531014, guid: a2cb9e038399cff4190943f5ddae7aea, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.11945534
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1136,6 +1144,14 @@ PrefabInstance:
     - target: {fileID: 6961153903835057022, guid: a2cb9e038399cff4190943f5ddae7aea, type: 3}
       propertyPath: m_Name
       value: Block_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8727564338518531014, guid: a2cb9e038399cff4190943f5ddae7aea, type: 3}
+      propertyPath: m_Size.x
+      value: 3.2085571
+      objectReference: {fileID: 0}
+    - target: {fileID: 8727564338518531014, guid: a2cb9e038399cff4190943f5ddae7aea, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.14274597
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

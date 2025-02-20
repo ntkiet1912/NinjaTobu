@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -19,6 +20,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool isPlayJumpSFX = false;
     private bool isJump = false;
 
+    [Header("Swipe Line Settings")]
+    public LineRenderer lineRenderer;
+    public float lineDuration = 0.3f;
+    public float maxLineLength = 2f;
+    public float minLineWidth = 0.05f;
+    public float maxLineWidth = 0.2f;
+
 
     private Vector2 startMousePosition; 
     private Vector2 endMousePosition;   
@@ -35,6 +43,9 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         groundWallCheck = GetComponent<GroundWallCheck>();
         anim = GetComponent<Animator>();
+
+        //line renderer
+        lineRenderer.enabled = false;
     }
 
     private void Update()
@@ -117,10 +128,38 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             startMousePosition = Input.mousePosition;
+            //line renderer
+            lineRenderer.enabled = true;
             
+
+        }
+        if(Input.GetMouseButton(0))
+        {
+            Vector2 currentMousePosition = Input.mousePosition;
+            lineRenderer.SetPosition(0, transform.position);
+
+            // Tính swipeVector từ startMousePosition tới currentMousePosition
+            Vector2 swipeVector = currentMousePosition - startMousePosition;
+
+            // Lấy hướng và khoảng cách
+            Vector2 direction = swipeVector.normalized;
+            float distance = swipeVector.magnitude;
+
+            // Giới hạn độ dài tối đa
+            distance = Mathf.Min(distance, maxLineLength * 100);
+
+            // Tính vị trí cuối cùng của line từ vị trí player
+            Vector2 endPosition = (Vector2)transform.position + direction * (distance / 100); // Chia lại cho 100 để về đơn vị thế giới
+
+            // Giảm dần độ rộng từ maxLineWidth về minLineWidth
+            float normalizedDistance = distance / (maxLineLength * 100);
+            float currentWidth = Mathf.Lerp(maxLineWidth, minLineWidth, normalizedDistance);
+
+            lineRenderer.startWidth = currentWidth;
+            lineRenderer.endWidth = currentWidth;
+            lineRenderer.SetPosition(1, endPosition);
         }
 
-        
         if (Input.GetMouseButtonUp(0))
         {
             endMousePosition = Input.mousePosition;
@@ -133,8 +172,12 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Swipe direction: " + isJumpDirect);
                 PerformDash(swipeVector.normalized);
             }
+
+            lineRenderer.enabled = false;
         }
     }
+    
+   
     private void FlipPlayer()
     {
         if (!isJumpDirect)
@@ -170,7 +213,7 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.gravityScale = 0;
             Debug.Log("Nhân vật đang bám tường");
-            Invoke(nameof(ReleaseFromWall), stickDuration);
+            //Invoke(nameof(ReleaseFromWall), stickDuration);
         }
     }
 
