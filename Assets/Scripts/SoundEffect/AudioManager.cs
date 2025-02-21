@@ -84,7 +84,7 @@ public class AudioManager : MonoBehaviour
     }
     public void JumpSFX()
     {
-        sfxSource.PlayOneShot(jumpSound);
+        sfxSource.PlayOneShot(jumpSound , 0.8f);
     }
     public void PlayUIButtonSFX()
     {
@@ -93,7 +93,7 @@ public class AudioManager : MonoBehaviour
     public void PlaySlowMotionSFX()
     {
         int index = Random.Range(0, slowmotionSound.Length);
-        sfxSource.PlayOneShot(slowmotionSound[index]);
+        sfxSource.PlayOneShot(slowmotionSound[index] , 0.6f);
     }
     public void StopSFX()
     {

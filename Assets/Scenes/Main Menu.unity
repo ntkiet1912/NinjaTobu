@@ -3792,6 +3792,7 @@ GameObject:
   - component: {fileID: 1562209329}
   - component: {fileID: 1562209331}
   - component: {fileID: 1562209330}
+  - component: {fileID: 1562209332}
   m_Layer: 0
   m_Name: Tree_1
   m_TagString: Untagged
@@ -3939,6 +3940,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1562209332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562209328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7e945e214d8cde499804be15677fd42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swayAmount: 5
+  swaySpeed: 2
+  swayRandomness: 0.5
+  originalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1589630629
 GameObject:
   m_ObjectHideFlags: 0
