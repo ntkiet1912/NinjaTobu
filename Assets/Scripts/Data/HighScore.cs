@@ -11,6 +11,6 @@ public class HighScore : MonoBehaviour
 
     private void Start()
     {
-        highScoreText.text = "best " + highScore.GetIntData("HighScore", 0).ToString();
+        highScoreText.text = "best\n" + highScore.GetIntData("HighScore", 0).ToString();
     }
 }

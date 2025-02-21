@@ -23,7 +23,7 @@ public class GameScore : MonoBehaviour
     private void Update()
     {
         CalculateScore();
-        scoreText.text = "Score " + Mathf.Round(score).ToString();
+        scoreText.text = " score\n" +  Mathf.Round(score).ToString();
         CheckHighScore();
     }
     private void CalculateScore()
