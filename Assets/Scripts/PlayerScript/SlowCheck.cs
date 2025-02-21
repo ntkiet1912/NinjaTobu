@@ -15,8 +15,10 @@ public class SlowCheck : MonoBehaviour
     }
     private void Update()
     {
+        CheckSlowSFX();
         CheckJump();
         ActiveSlow();
+        
     }
     private void ActiveSlow()
     {
@@ -24,8 +26,10 @@ public class SlowCheck : MonoBehaviour
         {
             if (slowCount > 0 && isJump)
             {
+                
                 AudioManager.instance.PlaySlowMotionSFX();
                 Time.timeScale = slowScale;
+                Time.fixedDeltaTime = 0.02f * Time.timeScale;
                 slowCount--;
                 anim.SetBool("isSlow", true);
             }
@@ -37,6 +41,7 @@ public class SlowCheck : MonoBehaviour
         else if (Input.GetMouseButtonUp(0))
         {
             Time.timeScale = 1;
+            Time.fixedDeltaTime = 0.02f;
             AudioManager.instance.StopSFX();
             anim.SetBool("isSlow", false);
         }
@@ -53,5 +58,12 @@ public class SlowCheck : MonoBehaviour
             isJump = false;
         }
     }
-   
+    private void CheckSlowSFX()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if(player != null && !player.activeInHierarchy)
+        {
+            AudioManager.instance.StopSFX();
+        }
+    }
 }

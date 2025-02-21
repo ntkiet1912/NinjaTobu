@@ -27,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
     public float minLineWidth = 0.05f;
     public float maxLineWidth = 0.2f;
 
+    [Header("Jump Settings")]
+    public int maxJump = 1;
+    [SerializeField] private int jumpCount = 0;
 
     private Vector2 startMousePosition; 
     private Vector2 endMousePosition;   
@@ -53,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
         CheckCollision();
         PlayAnimation();
         HandleMouseSwipe();
+        ResetJumpCount();
         FlipPlayer();
         CheckWallSFX();
         CheckJumpSFX();
@@ -138,20 +142,20 @@ public class PlayerMovement : MonoBehaviour
             Vector2 currentMousePosition = Input.mousePosition;
             lineRenderer.SetPosition(0, transform.position);
 
-            // Tính swipeVector từ startMousePosition tới currentMousePosition
+            
             Vector2 swipeVector = currentMousePosition - startMousePosition;
 
-            // Lấy hướng và khoảng cách
+           
             Vector2 direction = swipeVector.normalized;
             float distance = swipeVector.magnitude;
 
-            // Giới hạn độ dài tối đa
+            
             distance = Mathf.Min(distance, maxLineLength * 100);
 
-            // Tính vị trí cuối cùng của line từ vị trí player
-            Vector2 endPosition = (Vector2)transform.position + direction * (distance / 100); // Chia lại cho 100 để về đơn vị thế giới
+            
+            Vector2 endPosition = (Vector2)transform.position + direction * (distance / 100); 
 
-            // Giảm dần độ rộng từ maxLineWidth về minLineWidth
+            
             float normalizedDistance = distance / (maxLineLength * 100);
             float currentWidth = Mathf.Lerp(maxLineWidth, minLineWidth, normalizedDistance);
 
@@ -169,15 +173,36 @@ public class PlayerMovement : MonoBehaviour
             if (swipeVector.magnitude >= swipeThreshold)
             {
                 isJumpDirect = swipeVector.x > 0;
+                bool canJump = groundWallCheck.isGrounded || groundWallCheck.isAgainstWall || groundWallCheck.isRooted;
                 Debug.Log("Swipe direction: " + isJumpDirect);
-                PerformDash(swipeVector.normalized);
+                if(canJump && jumpCount < maxJump)
+                {
+                    PerformDash(swipeVector.normalized);
+                    jumpCount++;
+                }
+                else if(jumpCount < maxJump && !canJump)
+                {
+                    PerformDash(swipeVector.normalized);
+                    jumpCount++;
+                }
+                else if (jumpCount >= maxJump)
+                {
+                    return;
+                }
+
             }
 
             lineRenderer.enabled = false;
         }
     }
-    
-   
+
+    private void ResetJumpCount()
+    {
+        if (groundWallCheck.isGrounded || groundWallCheck.isRooted || groundWallCheck.isAgainstWall)
+        {
+            jumpCount = 0;
+        }
+    }
     private void FlipPlayer()
     {
         if (!isJumpDirect)
