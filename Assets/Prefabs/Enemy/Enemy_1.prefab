@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2457723327087809773}
   m_Layer: 9
   m_Name: vision
-  m_TagString: Untagged
+  m_TagString: Vision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,7 +163,7 @@ Transform:
   m_GameObject: {fileID: 6614883176342045839}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.46, y: -1.57, z: 6.7448535}
+  m_LocalPosition: {x: 17.44, y: -1.57, z: 6.7448535}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -327,14 +327,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cee3dd8d770f2734db994d8705c362a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.45
-  colliderCheckOffset: {x: 0.93, y: -0}
+  radius: 0.88
+  isHit: 0
+  colliderCheckOffset: {x: 0.91, y: -0}
   targetPlayer:
     serializedVersion: 2
     m_Bits: 128
   timeToFlip: 5
   delaytimeAtk: 5
   maxAttackCount: 2
+  isEndAtk: 0
+  vision: {fileID: 1414333168956934974}
 --- !u!114 &6143983505566683301
 MonoBehaviour:
   m_ObjectHideFlags: 0

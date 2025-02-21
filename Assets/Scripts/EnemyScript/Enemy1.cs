@@ -7,7 +7,7 @@ public class Enemy1 : MonoBehaviour
 
     [Header("ColliderCheck")]
     public float radius;
-    private bool isHit;
+    public bool isHit;
     public Vector2 colliderCheckOffset;
     public LayerMask targetPlayer;
 
@@ -18,15 +18,17 @@ public class Enemy1 : MonoBehaviour
     [Header("Attack")]
     [SerializeField] private int delaytimeAtk;
     [SerializeField] private int maxAttackCount;
+    public bool isEndAtk = false;
+    private int attackCount; //so luot tan cong
     private bool isAttack;
     private float timer;
-    private int attackCount;
-
+    [SerializeField] private GameObject vision;
     private void Start()
     {
         attackCount = maxAttackCount;
+        isAttack = false;
         anim = GetComponent<Animator>();
-
+        vision.SetActive(true);
         // Chạy coroutine auto flip khi enemy được kích hoạt
         corountineFlip = StartCoroutine(AutoFlip());
     }
@@ -35,17 +37,16 @@ public class Enemy1 : MonoBehaviour
     {
         Detection();
         EndAtk();
-        if(isAttack)
+        if (isAttack)
         {
             timer += Time.deltaTime;
-            if (timer >= delaytimeAtk)
+            if (timer >= 2)
             {
                 isAttack = false;
                 timer = 0;
             }
         }
     }
-
     IEnumerator AutoFlip()
     {
         while (true) // Vòng lặp vô hạn cho auto flip
@@ -73,14 +74,18 @@ public class Enemy1 : MonoBehaviour
 
     private void Detection()
     {
-        isHit = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(transform.localScale.x * colliderCheckOffset.x, colliderCheckOffset.y), radius, targetPlayer);
+        Collider2D player = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(transform.localScale.x * colliderCheckOffset.x, colliderCheckOffset.y), radius, targetPlayer);
+        isHit = (player != null);
         if (isHit)
         {
             if (attackCount > 0 && !isAttack)
             {
                 anim.SetTrigger("Attack");
+                AudioManager.instance.PlayEnemyAttack();
                 attackCount -= 1;
                 isAttack = true;
+                Vector2 knockbackDirection = (player.transform.position - transform.position).normalized;
+                player.GetComponent<PlayerController>()?.ApplyKnockBack(knockbackDirection);
             }
         }
     }
@@ -90,7 +95,8 @@ public class Enemy1 : MonoBehaviour
         if (attackCount <= 0)
         {
             anim.SetBool("EndAtk", true);
-
+            isEndAtk = true;
+            vision.SetActive(false);
             // Dừng Auto Flip khi hết lượt tấn công
             if (corountineFlip != null)
             {
@@ -98,15 +104,16 @@ public class Enemy1 : MonoBehaviour
                 corountineFlip = null;
             }
 
-            Invoke(nameof(ResetAtk), 5.0f);
+            Invoke(nameof(ResetAtk), delaytimeAtk);
         }
     }
 
     private void ResetAtk()
     {
         anim.SetBool("EndAtk", false);
+        isEndAtk = false;
         attackCount = maxAttackCount;
-
+        vision.SetActive(true);
         // Nếu chưa có coroutine auto flip, thì khởi động lại
         if (corountineFlip == null)
         {
@@ -120,12 +127,4 @@ public class Enemy1 : MonoBehaviour
         Gizmos.DrawWireSphere((Vector2)transform.position + new Vector2(transform.localScale.x * colliderCheckOffset.x, colliderCheckOffset.y), radius);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            Vector2 knockbackDirection = (collision.transform.position - transform.position).normalized;
-            collision.GetComponent<PlayerController>()?.ApplyKnockBack(knockbackDirection);
-        }
-    }
 }

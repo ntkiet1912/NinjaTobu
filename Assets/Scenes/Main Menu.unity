@@ -135,8 +135,12 @@ PrefabInstance:
       value: CoinBar
       objectReference: {fileID: 0}
     - target: {fileID: 2674572330654252170, guid: b8600b45ea2448c4894de7d692e08b92, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 350
+      objectReference: {fileID: 0}
+    - target: {fileID: 2674572330654252170, guid: b8600b45ea2448c4894de7d692e08b92, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -43.2
+      value: -98
       objectReference: {fileID: 0}
     - target: {fileID: 2674572330654252170, guid: b8600b45ea2448c4894de7d692e08b92, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -208,7 +212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6882501526680698280, guid: b8600b45ea2448c4894de7d692e08b92, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -87
+      value: -154
       objectReference: {fileID: 0}
     - target: {fileID: 6882501526680698280, guid: b8600b45ea2448c4894de7d692e08b92, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -224,13 +228,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7791509808299260289, guid: b8600b45ea2448c4894de7d692e08b92, type: 3}
       propertyPath: m_Text
-      value: '
+      value: '200
 
 '
       objectReference: {fileID: 0}
     - target: {fileID: 7791509808299260289, guid: b8600b45ea2448c4894de7d692e08b92, type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791509808299260289, guid: b8600b45ea2448c4894de7d692e08b92, type: 3}
       propertyPath: m_FontData.m_FontSize
-      value: 140
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2897,6 +2905,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b8d351a462923004f93a1aea7899a467, type: 3}
   CoinCollected: {fileID: 8300000, guid: 1a0c1afb797fbb943ba06077255ded5c, type: 3}
   AttackSFX: {fileID: 8300000, guid: 659534b24a4a39542b03f5564b923c33, type: 3}
+  enemyAttackSFX: {fileID: 8300000, guid: 34bbf33c3daa2c243836475298d03547, type: 3}
   isMusicOn: 0
   isSFXOn: 0
 --- !u!1 &1173516143
@@ -3952,10 +3961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e945e214d8cde499804be15677fd42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swayAmount: 5
-  swaySpeed: 2
-  swayRandomness: 0.5
-  originalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1589630629
 GameObject:
   m_ObjectHideFlags: 0

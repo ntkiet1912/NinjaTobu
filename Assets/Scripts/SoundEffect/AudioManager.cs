@@ -19,6 +19,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] slowmotionSound;
     public AudioClip CoinCollected;
     public AudioClip AttackSFX;
+    public AudioClip enemyAttackSFX;
 
     [Header("Save Volume")]
     public bool isMusicOn;
@@ -135,5 +136,9 @@ public class AudioManager : MonoBehaviour
         {
             isSFXOn = true;
         }
+    }
+    public void PlayEnemyAttack()
+    {
+        sfxSource.PlayOneShot(enemyAttackSFX);
     }
 }

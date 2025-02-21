@@ -57,13 +57,48 @@ public class PlayerAttack : MonoBehaviour
             enemyLayer
         ));
 
-        isAttack = hitEnemies.Count > 0;
+        List<Collider2D> validEnemies = new List<Collider2D>();
+
+        foreach(Collider2D enemy in hitEnemies)
+        {
+            Enemy1 enemyScript = enemy.GetComponent<Enemy1>();
+            if(enemyScript != null)
+            {
+                if (enemyScript.isEndAtk)
+                {
+                    Debug.Log("EndAtk");
+                    validEnemies.Add(enemy);
+                }
+                else if (!isFacingPlayer(enemy))
+                {
+                    Debug.Log("Not Facing Player");
+                    validEnemies.Add(enemy);
+                }
+            }
+        }
+        isAttack = validEnemies.Count > 0;
 
         if (isAttack && Time.time - lastAttackTime >= attackCooldown)
         {
-            Attack(hitEnemies.ToArray());
+            Attack(validEnemies.ToArray());
             lastAttackTime = Time.time;
         }
+    }
+    private bool isFacingPlayer(Collider2D enemy)
+    {
+        Transform enemyTrans = enemy.transform;
+        float direction = transform.position.x - enemyTrans.position.x;
+        //enemy quay phai va player o ben phai enemy
+        if(enemyTrans.localScale.x > 0 && direction > 0)
+        {
+            return true;
+        }
+        //enemy quay trai va player o ben trai enemy
+        if(enemyTrans.localScale.x < 0 && direction < 0)
+        {
+            return true;
+        }
+        return false;
     }
     private void Attack(Collider2D[] hitEnemies)
     {

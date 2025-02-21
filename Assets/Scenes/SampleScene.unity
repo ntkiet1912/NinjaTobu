@@ -533,7 +533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAttack: 0
   attackCheckOffset: {x: 0.82, y: 0.1}
-  attackRadius: 0.58
+  attackRadius: 0.5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
