@@ -30,6 +30,7 @@ public class Enemy1 : MonoBehaviour
         anim = GetComponent<Animator>();
         vision.SetActive(true);
         // Chạy coroutine auto flip khi enemy được kích hoạt
+        Debug.Log("Coroutine has started");
         corountineFlip = StartCoroutine(AutoFlip());
     }
 
@@ -43,6 +44,7 @@ public class Enemy1 : MonoBehaviour
             if (timer >= 2)
             {
                 isAttack = false;
+               
                 timer = 0;
             }
         }
@@ -82,7 +84,7 @@ public class Enemy1 : MonoBehaviour
             {
                 anim.SetTrigger("Attack");
                 AudioManager.instance.PlayEnemyAttack();
-                attackCount -= 1;
+                attackCount -= 1; 
                 isAttack = true;
                 Vector2 knockbackDirection = (player.transform.position - transform.position).normalized;
                 player.GetComponent<PlayerController>()?.ApplyKnockBack(knockbackDirection);
