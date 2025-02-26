@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4720d8bf85bc2844c80b31f60ac50762
+guid: f4538325347d5f945af2e9f8545b6031
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,133 +121,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: pngwing.com_0
-      rect:
-        serializedVersion: 2
-        x: 10
-        y: 640
-        width: 364
-        height: 381
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7bd2df7f78724e8459a3dcd2dd2605e5
-      internalID: -732594712
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pngwing.com_1
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 640
-        width: 320
-        height: 247
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4f450a9246bbf0a4ba5bb053028d3b53
-      internalID: -1284557553
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pngwing.com_2
-      rect:
-        serializedVersion: 2
-        x: 736
-        y: 640
-        width: 256
-        height: 240
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fd4a36c2666098841828ee4318037602
-      internalID: 1067449329
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pngwing.com_3
-      rect:
-        serializedVersion: 2
-        x: 12
-        y: 384
-        width: 214
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d01fa0328f7b3f84ead59f1d850a63cb
-      internalID: -715302705
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pngwing.com_4
-      rect:
-        serializedVersion: 2
-        x: 275
-        y: 384
-        width: 217
-        height: 174
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c1cfd7bcb12ed564f963a860d2581646
-      internalID: 69441321
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pngwing.com_5
-      rect:
-        serializedVersion: 2
-        x: 520
-        y: 384
-        width: 110
-        height: 124
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a8e039e89e7c1744788fbee9fa0b6e69
-      internalID: -278004121
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -258,13 +132,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      pngwing.com_0: -732594712
-      pngwing.com_1: -1284557553
-      pngwing.com_2: 1067449329
-      pngwing.com_3: -715302705
-      pngwing.com_4: 69441321
-      pngwing.com_5: -278004121
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
