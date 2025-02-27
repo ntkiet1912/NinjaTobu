@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
         isKnockedBack = true;
+        transform.localScale *= -1;
         rb.velocity = Vector2.zero;
         rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
         StartCoroutine(ApplySlowMotion());

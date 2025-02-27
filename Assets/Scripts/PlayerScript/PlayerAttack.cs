@@ -75,6 +75,20 @@ public class PlayerAttack : MonoBehaviour
                     validEnemies.Add(enemy);
                 }
             }
+           FireEnemy fireEnemy = enemy.GetComponent<FireEnemy>();
+            if (fireEnemy != null)
+            {
+                if (fireEnemy.isEndAtk)
+                {
+                    Debug.Log("EndAtk");
+                    validEnemies.Add(enemy);
+                }
+                else if (!isFacingPlayer(enemy))
+                {
+                    Debug.Log("Not Facing Player");
+                    validEnemies.Add(enemy);
+                }
+            }
         }
         isAttack = validEnemies.Count > 0;
 
@@ -89,12 +103,12 @@ public class PlayerAttack : MonoBehaviour
         Transform enemyTrans = enemy.transform;
         float direction = transform.position.x - enemyTrans.position.x;
         //enemy quay phai va player o ben phai enemy
-        if(enemyTrans.localScale.x > 0 && direction > 0)
+        if(enemyTrans.localScale.x < 0 && direction > 0)
         {
             return true;
         }
         //enemy quay trai va player o ben trai enemy
-        if(enemyTrans.localScale.x < 0 && direction < 0)
+        if(enemyTrans.localScale.x > 0 && direction < 0)
         {
             return true;
         }
