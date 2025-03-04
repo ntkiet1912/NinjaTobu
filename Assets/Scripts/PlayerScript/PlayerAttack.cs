@@ -38,7 +38,6 @@ public class PlayerAttack : MonoBehaviour
     {
         List<Collider2D> hitEnemies = new List<Collider2D>();
 
-        // Kiểm tra theo 3 hướng và thêm enemy vào danh sách
         hitEnemies.AddRange(Physics2D.OverlapCircleAll(
             (Vector2)transform.position + new Vector2(transform.localScale.x * attackCheckOffset.x, attackCheckOffset.y),
             attackRadius,
@@ -88,6 +87,12 @@ public class PlayerAttack : MonoBehaviour
                     Debug.Log("Not Facing Player");
                     validEnemies.Add(enemy);
                 }
+            }
+            RangedEnemy rangedEnemy = enemy.GetComponent<RangedEnemy>();
+            if (rangedEnemy != null)
+            {
+                Debug.Log("Add ranged enemy!");
+                validEnemies.Add(enemy);
             }
         }
         isAttack = validEnemies.Count > 0;
