@@ -8,7 +8,7 @@ public class EndlessModeManager : MonoBehaviour
     public Transform Player;
     private List<GameObject> activeLevels = new List<GameObject>();
     public GameObject startLevel;
-    private float nextSpawnY = 37f;
+    private float nextSpawnY = 38.4f;
     private int maxLevelsOnScreen = 3;
 
     private void Start()
@@ -31,7 +31,7 @@ public class EndlessModeManager : MonoBehaviour
     {
         GameObject newLevel = levelPool.GetRandomLevel();
         newLevel.transform.position = new Vector2(0,nextSpawnY);
-        nextSpawnY += 37;
+        nextSpawnY += 38.4f;
         activeLevels.Add(newLevel);
     }
     void RemoveOldestLevel()
