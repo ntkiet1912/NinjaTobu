@@ -126,7 +126,7 @@ public class PlayerAttack : MonoBehaviour
         {
             ParticleSystem slash = Instantiate(slashEffect, spawnPos, Quaternion.identity);
             slash.transform.localScale = new Vector3(-1 * transform.localScale.x, 1, 1);
-            AudioManager.instance.PlayAttackSFX();
+            //AudioManager.instance.PlayAttackSFX();
             slash.Play();
             
         }

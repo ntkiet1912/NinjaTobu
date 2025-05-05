@@ -83,7 +83,7 @@ public class Enemy1 : MonoBehaviour
             if (attackCount > 0 && !isAttack)
             {
                 anim.SetTrigger("Attack");
-                AudioManager.instance.PlayEnemyAttack();
+                //AudioManager.instance.PlayEnemyAttack();
                 attackCount -= 1; 
                 isAttack = true;
                 Vector2 knockbackDirection = (player.transform.position - transform.position).normalized;

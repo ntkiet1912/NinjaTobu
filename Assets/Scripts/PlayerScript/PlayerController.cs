@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(DieEffect());
         player.SetActive(false);
         AudioManager.instance.DieSFX();
+        //GameManager.instance.EndGame();
     }
     IEnumerator DieEffect()
     {

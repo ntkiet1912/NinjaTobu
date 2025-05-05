@@ -76,22 +76,22 @@ public class PlayerMovement : MonoBehaviour
         //climb
         if (isClimbing)
         {
-            anim.SetBool("isClimbing", true);
+            anim.SetBool("Climbing", true);
         }
         else
         {
-            anim.SetBool("isClimbing", false);
+            anim.SetBool("Climbing", false);
         }
 
         //wall stick
         if (isStickingToWall)
         {
-            anim.SetBool("isSticking", true);
+            anim.SetBool("sticking", true);
 
         }
         else
         {
-            anim.SetBool("isSticking", false);
+            anim.SetBool("sticking", false);
         }
 
         
@@ -121,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(0, rb.velocity.y);
         rb.gravityScale = 0;
 
-        Invoke(nameof(ReleaseFromWall), stickDuration);
+        //Invoke(nameof(ReleaseFromWall), stickDuration);
 
     }
     
@@ -161,6 +161,14 @@ public class PlayerMovement : MonoBehaviour
 
             lineRenderer.startWidth = currentWidth;
             lineRenderer.endWidth = currentWidth;
+            lineRenderer.startWidth = currentWidth;
+            lineRenderer.endWidth = currentWidth;
+
+            // Sử dụng offset hoặc điểm cụ thể
+            Vector3 lineStart = transform.position + new Vector3(0, 0.5f, 0); // offset example
+                                                                              // hoặc: Vector3 lineStart = lineStartPoint.position;
+
+            lineRenderer.SetPosition(0, lineStart);
             lineRenderer.SetPosition(1, endPosition);
         }
 
